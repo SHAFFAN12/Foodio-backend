@@ -5,13 +5,12 @@ const cors = require('cors');
 require('dotenv').config();
 
 const app = express();
-const port = 3000;
 
 app.use(bodyParser.json());
-app.use(cors());
+app.use(cors({ origin: 'https://shaffan12.github.io' }));
 
 // Connect to MongoDB
-mongoose.connect(process.env.MONGODB_URL, { useNewUrlParser: true, useUnifiedTopology: true })
+mongoose.connect(process.env.MONGODB_URL)
   .then(() => console.log('MongoDB connected...'))
   .catch(err => console.log(err));
 
